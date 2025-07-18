@@ -1,0 +1,106 @@
+package br.com.estanteService;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+import br.com.atendenteView.Atendente;
+import br.com.suplemetoModel.Suplemento;
+
+
+public class Estante {
+	
+	List <Suplemento> lista;
+	
+	public Estante() {
+		lista = new ArrayList<>();
+	}
+	
+	public void gerenciarEstante(int opcao, Atendente atendente) {
+		switch(opcao) {
+		case 1 -> {
+			String nome = atendente.CadastrarNome();
+			double preco = atendente.CadastrarPreco();
+			int quantidade = atendente.CadastrarQuantidade();
+			String marca = atendente.CadastrarMarca();
+			
+			Suplemento suplemento = new Suplemento(nome, preco, quantidade, marca);
+			lista.add(suplemento);
+		}
+		
+		case 2 -> {
+			for(Suplemento suplemento : lista) {
+				atendente.Visualizar(suplemento);
+			}
+		}
+		
+		case 3 -> {
+			String remover = atendente.Remover();
+			for(int indice = 0; indice < lista.size(); indice ++) {
+				if(lista.get(indice).getNome().equalsIgnoreCase(remover)) {
+					lista.remove(indice);
+				}
+				
+			}
+			
+		}
+		
+		case 4 ->{
+			String pesquisar = atendente.Pesquisar();
+			for(Suplemento suplemento : lista) {
+				if(suplemento.getNome().equalsIgnoreCase(pesquisar)) {
+					atendente.Visualizar(suplemento);;
+				}
+				
+			}
+		}
+		
+		case 5->{
+			String OQEditar = atendente.Editar();
+			boolean encontrado = false;
+			
+			for(Suplemento suplemento : lista) {
+				if(suplemento.getNome().equalsIgnoreCase(OQEditar)) {
+					encontrado = true;
+					
+					int campo = atendente.CampoEditar();
+					
+					switch(campo) {
+					case 1 ->{
+						String novoNome = atendente.EditarNome();
+						suplemento.setNome(novoNome);
+					}
+					
+					case 2 ->{
+						double novoPreco = atendente.EditarPreco();
+						suplemento.setPreco(novoPreco);
+					}
+					
+					case 3 ->{
+						int novaQuantidade = atendente.EditarQuantidade();
+						suplemento.setQuantidade(novaQuantidade);
+					}
+					
+					case 4 ->{
+						String novaMarca = atendente.EditarMarca();
+						suplemento.setMarca(novaMarca);
+					}
+					}
+					
+					atendente.SucessoEitar();
+				} else {
+					atendente.NaoEcontrado();
+				}
+			}
+		}
+		
+		case 0->{
+			atendente.Sair();
+		}
+		}
+		
+	}
+
+
+}

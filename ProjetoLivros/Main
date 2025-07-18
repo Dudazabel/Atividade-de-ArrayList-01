@@ -1,0 +1,16 @@
+package br.com.main;
+import br.com.bibliotecarioView.Bibliotecario;
+import br.com.estanteService.Estante;
+public class Main {
+	public static void main(String[] args) {
+		int opcaoEscolhida;
+		
+		Bibliotecario bibliotecario = new Bibliotecario();
+		Estante estante = new Estante();
+		
+		do {
+			opcaoEscolhida = bibliotecario.Menu();
+			estante.gerenciarEstante(opcaoEscolhida, bibliotecario);
+		}while (opcaoEscolhida != 0);
+	}
+}

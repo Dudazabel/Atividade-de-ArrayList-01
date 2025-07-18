@@ -1,0 +1,111 @@
+package br.com.estanteService;
+import java.util.ArrayList;
+import java.util.List;
+import br.com.livroModel.Livro;
+import br.com.bibliotecarioView.Bibliotecario;
+public class Estante {
+	List<Livro> lista;
+	public Estante() {
+		lista = new ArrayList<>();
+	}
+	private Livro busca(String nome) {
+		for (Livro livro : lista) {
+			if (livro.getNome().equalsIgnoreCase(nome)) {
+				return livro;
+			}
+		}
+		return null;
+	}
+	public void gerenciarEstante(int opcao, Bibliotecario bibliotecario) {
+		switch(opcao) {
+		case 1 ->{
+			String nome = bibliotecario.CadastrarNome();
+			String autor = bibliotecario.CadastrarAutor();
+			int numPag = bibliotecario.CadastrarNumPag();
+			int ano = bibliotecario.CadastrarAno();
+			
+			Livro livro = new Livro(nome, autor, numPag, ano);
+			lista.add(livro);
+		}
+		
+		case 2 -> {
+			for(Livro livro : lista) {
+				bibliotecario.Visualizar(livro);
+		}
+		}
+		
+		case 3 -> {
+			String remover = bibliotecario.Remover();
+			boolean removido = false;
+			
+			for(int indice = 0; indice < lista.size(); indice++) {
+				if(lista.get(indice).getNome().equalsIgnoreCase(remover)) {
+					lista.remove(indice);
+					removido = true;
+				}
+			}
+		}
+		
+		case 4 -> {
+			String nomePesquisa = bibliotecario.pesquisa();
+			Livro resultado  = busca(nomePesquisa);
+			if(resultado != null) {
+				bibliotecario.Visualizar(resultado);
+			}else {
+				bibliotecario.erroPesquisa();
+			}
+		}
+		
+		case 5 -> {
+			editarLivro(bibliotecario);
+		}
+		
+		case 0 -> {
+			bibliotecario.saida();
+		}
+		
+		default -> {
+			bibliotecario.invalido();
+		}
+	}	
+}
+private void editarLivro(Bibliotecario bibliotecario) {
+	String nomeEdicao = bibliotecario.buscarEditar();
+	Livro livro = busca (nomeEdicao);
+	
+	if (livro == null) {
+		bibliotecario.erroPesquisa();
+		return;
+	}
+	
+	String escolha = bibliotecario.escolhaEdicao();
+	
+	switch (escolha.toLowerCase()){
+	case "nome" -> {
+		String novoNome = bibliotecario.editarNome();
+		livro.setNome(novoNome);
+	}
+	
+	case "autor" -> {
+		String novoAutor = bibliotecario.editarAutor();
+		livro.setAutor(novoAutor);
+	}
+	
+	case "número de páginas", "número de paginas", "numero de páginas", "numero de paginas" -> {
+		int novoNumPag = bibliotecario.editarNumPag();
+		livro.setNumPag(novoNumPag);
+	}
+	
+	case "ano" -> {
+		int novoAno = bibliotecario.editarAno();
+		livro.setAno(novoAno);
+	}
+	
+	default -> {
+		bibliotecario.invalido();
+	}
+	}
+	
+	bibliotecario.sucesso();
+}
+}

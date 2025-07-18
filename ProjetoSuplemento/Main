@@ -1,0 +1,27 @@
+package br.com.main;
+
+
+import br.com.atendenteView.Atendente;
+import br.com.estanteService.Estante;
+
+
+public class Main {
+
+
+	public static void main(String[] args) {
+		
+		Atendente atendente = new Atendente();
+		Estante estante = new Estante();
+		
+		int opcaoEscolhida;
+		
+		do {
+			opcaoEscolhida = atendente.Menu();
+			estante.gerenciarEstante(opcaoEscolhida, atendente);
+		}while(opcaoEscolhida != 0);
+
+
+	}
+
+
+}

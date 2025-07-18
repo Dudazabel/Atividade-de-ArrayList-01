@@ -1,0 +1,120 @@
+package br.com.bibliotecarioView;
+import java.util.Scanner;
+import br.com.livroModel.Livro;
+public class Bibliotecario {
+	
+	Scanner leia = new Scanner(System.in);
+	
+	public int Menu() {
+		System.out.println("--------------");
+		System.out.println("MENU PRINCIPAL");
+		System.out.println("--------------");
+		System.out.println("1 - Cadastrar");
+		System.out.println("2 - Listar");
+		System.out.println("3 - Remover");
+		System.out.println("4 - Pesquisar");
+		System.out.println("5 - Editar");
+		System.out.println("0 - Sair");
+		System.out.println("-------------");
+		return leia.nextInt();
+	}
+	
+	public String CadastrarNome() {
+		leia.nextLine();
+		System.out.println("Digite o nome do livro:");
+		return leia.nextLine();
+	}
+	
+	public String CadastrarAutor() {
+		System.out.println("Digite o nome do autor:");
+		return leia.nextLine();
+	}
+	
+	public int CadastrarNumPag() {
+		System.out.println("Digite o número de páginas:");
+		return leia.nextInt();
+	}
+	
+	public int CadastrarAno() {
+		System.out.println("Digite o ano de lançamento:");
+		return leia.nextInt();
+	}
+	
+	public void Visualizar(Livro livro) {
+		System.out.println("-----------------------");
+		System.out.println("Nome: " + livro.getNome());
+		System.out.println("Autor: " + livro.getAutor());
+		System.out.println("Número de páginas: " + livro.getNumPag());
+		System.out.println("Ano: " + livro.getAno());
+		System.out.println("-----------------------");
+	}
+	
+	public String Remover() {
+		leia.nextLine();
+		System.out.println("Digite o nome do livro que deseja remover:");
+		return leia.nextLine();
+	}
+	
+	public String pesquisa() {
+		leia.nextLine();
+		System.out.println("Digite o nome do livro que deseja pesquisar:");
+		return leia.nextLine();
+	}
+	
+	public void erroPesquisa() {
+		System.out.println("Livro não encontrado.");
+	}
+	
+	public String buscarEditar() {
+		leia.nextLine();
+		System.out.println("Digite o nome que deseja editar:");
+		return leia.nextLine();
+	}
+	
+	public String escolhaEdicao() {
+		System.out.println("O que você deseja editar?");
+		System.out.println("Nome");
+		System.out.println("Autor");
+		System.out.println("Número de páginas");
+		System.out.println("Ano");
+		String escolhaEdicao = leia.nextLine();
+		return escolhaEdicao;
+	
+	}
+	
+	public String editarNome() {
+		System.out.println("Digite o novo nome:");
+		String novoNome = leia.nextLine();
+		return novoNome;
+	}
+	
+	public String editarAutor() {
+		System.out.println("Digite o novo autor:");
+		String novoAutor = leia.nextLine();
+		return novoAutor;
+	}
+	
+	public int editarNumPag() {
+		System.out.println("Digite a nova quantidade de páginas:");
+		int novoNumPag = leia.nextInt();
+		return novoNumPag;
+	}
+	
+	public int editarAno() {
+		System.out.println("Digite o novo ano:");
+		int novoAno = leia.nextInt();
+		return novoAno;
+	}
+	
+	public void saida() {
+		System.out.println("Saindo...");
+	}
+	
+	public void invalido() {
+		System.out.println("Opção inválida.");
+	}
+	
+	public void sucesso() {
+		System.out.println("Mensagem editada com sucesso.");
+	}
+}

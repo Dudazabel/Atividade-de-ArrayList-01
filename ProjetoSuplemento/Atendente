@@ -1,0 +1,131 @@
+package br.com.atendenteView;
+
+
+import java.util.Scanner;
+
+
+import br.com.suplemetoModel.Suplemento;
+
+
+public class Atendente {
+	
+	Scanner leia = new Scanner(System.in);
+	
+	public int Menu() {
+		System.out.println("-------------");
+		System.out.println("MENU");
+		System.out.println("-------------");
+		System.out.println("1 - Cadastrar");
+		System.out.println("2 - Listar");
+		System.out.println("3 - Remover");
+		System.out.println("4 - Pesquisar");
+		System.out.println("5 - Editar");
+		System.out.println("0 - Sair");
+		System.out.println(">");
+		return leia.nextInt();
+	}
+	
+	public String CadastrarNome() {
+		leia.nextLine();
+		System.out.println("Digite o nome do suplemento:");
+		System.out.println(">");
+		return leia.nextLine();
+	}
+	
+	public double CadastrarPreco() {
+		System.out.println("Digite o preço do suplemento:");
+		System.out.println(">");
+		return leia.nextDouble();
+	}
+	
+	public int CadastrarQuantidade() {
+		System.out.println("Digite a quantidade do suplemento:");
+		System.out.println(">");
+		return leia.nextInt();
+	}
+	
+	public String CadastrarMarca() {
+		leia.nextLine();
+		System.out.println("Digite a marca do suplemento:");
+		System.out.println(">");
+		return leia.nextLine();
+	}
+	
+	public void Visualizar(Suplemento suplemento) {
+		System.out.println("------------------");
+		System.out.println("Nome: " + suplemento.getNome());
+		System.out.println("Preço: " + suplemento.getPreco());
+		System.out.println("Quantidade: " + suplemento.getQuantidade());
+		System.out.println("Marca: " + suplemento.getMarca());
+		System.out.println("------------------");
+	}
+	
+	public String Remover() {
+		leia.nextLine();
+		System.out.println("Digite o nome do suplemento que deseja remover:");
+		System.out.println(">");
+		return leia.nextLine();
+	}
+	
+	public String Pesquisar() {
+		leia.nextLine();
+		System.out.println("Digite o nome do suplemento que deseja pesquisar:");
+		System.out.println(">");
+		return leia.nextLine();
+	}
+	
+	public String Editar() {
+		leia.nextLine();
+		System.out.println("Digite o nome do suplemento que deseja editar:");
+		System.out.println(">");
+		return leia.nextLine();
+	}
+	
+	public int CampoEditar() {
+		System.out.println("Qual campo você deseja editar?");
+		System.out.println("1 - nome");
+		System.out.println("2 - preço");
+		System.out.println("3 - quantidade");
+		System.out.println("4 - marca");
+		System.out.println(">");
+		return leia.nextInt();
+	}
+	
+	public String EditarNome() {
+		leia.nextLine();
+		System.out.println("Digite o novo nome:");
+		System.out.println(">");
+		return leia.nextLine();
+	}
+	
+	public double EditarPreco() {
+		System.out.println("Digite o novo preço:");
+		System.out.println(">");
+		return leia.nextDouble();
+	}
+	
+	public int EditarQuantidade() {
+		System.out.println("Digite a nova quantidade:");
+		System.out.println(">");
+		return leia.nextInt();
+	}
+	
+	public String EditarMarca() {
+		leia.nextLine();
+		System.out.println("Digite a nova marca:");
+		System.out.println(">");
+		return leia.nextLine();
+	}
+	
+	public void SucessoEitar() {
+		System.out.println("Editado com sucesso.");
+	}
+	
+	public void NaoEcontrado() {
+		System.out.println("Nome não encontrado.");
+	}
+	
+	public void Sair() {
+		System.out.println("Saindo");
+	}
+}
