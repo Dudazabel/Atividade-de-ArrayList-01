@@ -1,0 +1,44 @@
+package br.com.emCartazService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.filmeModel.*;
+import br.com.atendenteView.*;
+
+public class EmCartaz {
+	
+	List<Filme>lista;
+	
+	public EmCartaz() {
+		lista = new ArrayList<>();
+	}
+	
+	public void gerenciarMenu(int opcao, Atendente atendente) {
+		switch(opcao) {
+		
+		case 1 ->{
+			
+			String titulo = atendente.cadastrarTitulo();
+			String genero = atendente.cadastrarGenero();
+			int duracao = atendente.cadastrarDuracao();
+			int anoLancamento = atendente.cadastrarAnoLancamento();
+			
+			Filme filme = new Filme(titulo, genero, duracao, anoLancamento);
+			
+			lista.add(filme);
+		}
+		
+		case 2 ->{
+			for(Filme filme:lista) {
+				atendente.visualizar(filme);
+			}
+		}
+		
+		case 3 ->{
+			
+		}
+		}
+	}
+
+}

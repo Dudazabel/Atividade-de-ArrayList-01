@@ -1,0 +1,23 @@
+package br.com.main;
+
+import br.com.atendenteView.*;
+import br.com.emCartazService.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Atendente atendente = new Atendente();
+		EmCartaz emcartaz = new EmCartaz();
+		
+		int opcao;
+		
+		do {
+			opcao = atendente.menu();
+			emcartaz.gerenciarMenu(opcao, atendente);
+			
+		}while(opcao != 0);
+
+	}
+
+}

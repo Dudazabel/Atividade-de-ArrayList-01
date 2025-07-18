@@ -1,0 +1,62 @@
+package br.com.atendenteView;
+
+import br.com.filmeModel.*;
+
+import java.util.Scanner;
+
+public class Atendente {
+	
+	Scanner leia = new Scanner(System.in);
+	
+	public int menu() {
+		System.out.println("-------------");
+		System.out.println("MENU");
+		System.out.println("-------------");
+		System.out.println("1 - Cadastrar");
+		System.out.println("2 - Listar");
+		System.out.println("3 - Remover");
+		System.out.println("4 - Pesquisar");
+		System.out.println("5 - Editar");
+		System.out.println("0 - Sair");
+		System.out.println(">");
+		return leia.nextInt();
+	}
+	
+	public String cadastrarTitulo() {
+		leia.nextLine();
+		System.out.println("Digite o titulo do filme:");
+		System.out.println(">");
+		return leia.nextLine();
+	}
+	
+	public String cadastrarGenero() {
+		leia.nextLine();
+		System.out.println("Digite o genero do filme:");
+		System.out.println(">");
+		return leia.nextLine();
+	}
+	
+	public int cadastrarDuracao() {
+		System.out.println("Digite a duração do filme:");
+		System.out.println(">");
+		return leia.nextInt();
+	}
+	
+	public int cadastrarAnoLancamento() {
+		System.out.println("Digite o ano do lançamento do filme:");
+		System.out.println(">");
+		return leia.nextInt();
+	}
+	
+	public void visualizar(Filme filme) {
+		System.out.println("-----------------");
+		System.out.println("Título:" + filme.getTitulo());
+		System.out.println("Genero:" + filme.getGenero());
+		System.out.println("Duração:" + filme.getDuracao());
+		System.out.println("Ano Lançamento:" + filme.getAnoLancamento());
+		System.out.println("-----------------");
+	}
+	
+	
+
+}
