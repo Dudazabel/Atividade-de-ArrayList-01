@@ -1,11 +1,8 @@
 package br.com.emCartazService;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import br.com.filmeModel.*;
 import br.com.atendenteView.*;
-
 public class EmCartaz {
 	
 	List<Filme>lista;
@@ -36,9 +33,65 @@ public class EmCartaz {
 		}
 		
 		case 3 ->{
+			String remover = atendente.Remover();
+			for(int indice = 0; indice < lista.size(); indice ++) {
+				if(lista.get(indice).getTitulo().equalsIgnoreCase(remover)) {
+					lista.remove(indice);
+				}
+			}
+		}
+		
+		case 4 ->{
+			String pesquisar = atendente.Pesquisar();
+			for(Filme filme : lista) {
+				if(filme.getTitulo().equalsIgnoreCase(pesquisar)) {
+					atendente.visualizar(filme);
+				}
+			}
+		}
+		
+		case 5 ->{
+			String OQEditar = atendente.Editar();
+			
+			for(Filme filme : lista) {
+				if(filme.getTitulo().equalsIgnoreCase(OQEditar)) {
+					int campo = atendente.CampoEditar();
+					
+					switch(campo) {
+					case 1 ->{
+						String novoTitulo = atendente.EditarTítulo();
+						filme.setTitulo(novoTitulo);
+					}
+					
+					case 2->{
+						String novoGenero = atendente.EditarGenero();
+						filme.setGenero(novoGenero);
+					}
+					
+					case 3 ->{
+						int novaDuracao = atendente.EditarDuracao();
+						filme.setDuracao(novaDuracao);
+					}
+					
+					case 4 ->{
+						int novoAnoLancamento = atendente.EditarAnoLancamento();
+						filme.setAnoLancamento(novoAnoLancamento);
+					}
+					}
+					
+					atendente.SucessoEditar();
+					
+				}else {
+					
+					atendente.Erro();
+					
+				}
+			}
+		}
+		
+		case 0 ->{
 			
 		}
 		}
 	}
-
 }
