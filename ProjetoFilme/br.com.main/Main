@@ -4,7 +4,6 @@ import br.com.atendenteView.*;
 import br.com.emCartazService.*;
 
 public class Main {
-
 	public static void main(String[] args) {
 		
 		Atendente atendente = new Atendente();
@@ -21,3 +20,4 @@ public class Main {
 	}
 
 }
+
