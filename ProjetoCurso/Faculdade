@@ -1,0 +1,100 @@
+package br.com.faculdadeService;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.atendenteView.*;
+import br.com.cursoModel.*;
+
+public class Faculdade {
+	
+	List<Curso>lista;
+	
+	public Faculdade() {
+		lista = new ArrayList<>();
+	}
+	
+	public void gerenciarMenu(int opcao, Atendente atendente) {
+		switch(opcao) {
+		
+		case 1 ->{
+			
+			String nome = atendente.cadastrarNome();
+			int duracao = atendente.cadastrarDuracao();
+			String nivel = atendente.cadastrarNivel();
+			int vagas = atendente.cadastrarVagas();
+			
+			Curso curso = new Curso(nome, duracao, nivel, vagas);
+			
+			lista.add(curso);
+		}
+		
+		case 2 ->{
+			for(Curso curso : lista) {
+				atendente.visualizar(curso);
+			}
+		}
+		
+		case 3 ->{
+			String remover = atendente.Remover();
+			for(int indice = 0; indice < lista.size(); indice ++) {
+				if(lista.get(indice).getNome().equalsIgnoreCase(remover)) {
+					lista.remove(indice);
+				}
+			}
+		}
+		
+		case 4 ->{
+			String pesquisar = atendente.Pesquisar();
+			for(Curso curso : lista) {
+				if(curso.getNome().equalsIgnoreCase(pesquisar)) {
+					atendente.visualizar(curso);
+				}
+			}
+		}
+		
+		case 5 ->{
+			String OQEditar = atendente.Editar();
+			
+			for(Curso curso : lista) {
+				if(curso.getNome().equalsIgnoreCase(OQEditar)) {
+					int campo = atendente.CampoEditar();
+					
+					switch(campo) {
+					case 1 ->{
+						String novoNome = atendente.EditarNome();
+						curso.setNome(novoNome);
+					}
+					
+					case 2->{
+						int novaDuracao = atendente.EditarDuracao();
+						curso.setDuracao(novaDuracao);
+					}
+					
+					case 3 ->{
+						String novoNivel = atendente.EditarNivel();
+						curso.setNivel(novoNivel);
+					}
+					
+					case 4 ->{
+						int novaVaga = atendente.EditarVagas();
+						curso.setVagas(novaVaga);
+					}
+					}
+					
+					atendente.SucessoEditar();
+					
+				}else {
+					
+					atendente.Erro();
+					
+				}
+			}
+		}
+		
+		case 0 ->{
+			
+		}
+		}
+	}
+
+}

@@ -1,0 +1,18 @@
+package br.com.main;
+import br.com.atendenteView.*;
+import br.com.faculdadeService.*;
+public class Main {
+	public static void main(String[] args) {
+		
+		Atendente atendente = new Atendente();
+		Faculdade faculdade = new Faculdade();
+		
+		int opcao;
+		
+		do {
+			opcao = atendente.menu();
+			faculdade.gerenciarMenu(opcao, atendente);
+			
+		}while(opcao != 0);
+	}
+}

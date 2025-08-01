@@ -1,0 +1,120 @@
+package br.com.atendenteView;
+import java.util.Scanner;
+import br.com.cursoModel.*;
+public class Atendente {
+	
+	Scanner leia = new Scanner(System.in);
+	
+	public int menu() {
+		System.out.println("-------------");
+		System.out.println("MENU");
+		System.out.println("-------------");
+		System.out.println("1 - Cadastrar");
+		System.out.println("2 - Listar");
+		System.out.println("3 - Remover");
+		System.out.println("4 - Pesquisar");
+		System.out.println("5 - Editar");
+		System.out.println("0 - Sair");
+		System.out.println(">");
+		return leia.nextInt();
+	}
+	
+	public String cadastrarNome() {
+		leia.nextLine();
+		System.out.println("Digite o nome do curso:");
+		System.out.println(">");
+		return leia.nextLine();
+	}
+	
+	public int cadastrarDuracao() {
+		System.out.println("Digite a duração do curso:");
+		System.out.println(">");
+		return leia.nextInt();
+	}
+	
+	public String cadastrarNivel() {
+		leia.nextLine();
+		System.out.println("Digite o nivel do curso:");
+		System.out.println(">");
+		return leia.nextLine();
+	}
+	
+	public int cadastrarVagas() {
+		System.out.println("Digite as vagas do curso:");
+		System.out.println(">");
+		return leia.nextInt();
+	}
+	
+	public void visualizar(Curso curso) {
+		System.out.println("-----------------");
+		System.out.println("Nome:" + curso.getNome());
+		System.out.println("Duração:" + curso.getDuracao());
+		System.out.println("Nível:" + curso.getNivel());
+		System.out.println("Vagas:" + curso.getVagas());
+		System.out.println("-----------------");
+	}
+	
+	public String Remover() {
+		System.out.println("Digite o nome do curso que você deseja remover:");
+		System.out.println(">");
+		return leia.nextLine();
+		}
+	
+	public String Pesquisar() {
+		System.out.println("Digite o nome do curso que você deseja pesquisar:");
+		System.out.println(">");
+		return leia.nextLine();
+		}
+	
+	public String Editar() {
+		System.out.println("Digite o nome do curso que você deseja editar:");
+		System.out.println(">");
+		return leia.nextLine();
+		}
+	
+	public int CampoEditar() {
+		System.out.println("O que do filme você deseja editar?");
+		System.out.println("1 - Curso");
+		System.out.println("2 - Duracao");
+		System.out.println("3 - Nível");
+		System.out.println("4 - Vagas");
+		System.out.println(">");
+		return leia.nextInt();
+	}
+	
+	public String EditarNome() {
+		System.out.println("Digite o novo nome:");
+		System.out.println(">");
+		return leia.nextLine();
+		}
+	
+	public int EditarDuracao() {
+		System.out.println("Digite a nova duração:");
+		System.out.println(">");
+		return leia.nextInt();
+		}
+	
+	public String EditarNivel() {
+		System.out.println("Digite o novo nível:");
+		System.out.println(">");
+		return leia.nextLine();
+		}
+	
+	public int EditarVagas() {
+		System.out.println("Digite as novas vagas:");
+		System.out.println(">");
+		return leia.nextInt();
+		}
+	
+	public void SucessoEditar() {
+		System.out.println("Edição concluída com sucesso.");
+	}
+	
+	public void Erro() {
+		System.out.println("Título não encontrado.");
+	}
+	
+	public void Sair() {
+		System.out.println("Saindo...");
+	}
+}
